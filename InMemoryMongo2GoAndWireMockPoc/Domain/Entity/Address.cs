@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InMemoryMongo2GoAndWireMockPoc.Models.Response
+namespace InMemoryMongo2GoAndWireMockPoc.Domain.Entity
 {
-    public class UserResponse
+    public class Address
     {
-
     }
 }
