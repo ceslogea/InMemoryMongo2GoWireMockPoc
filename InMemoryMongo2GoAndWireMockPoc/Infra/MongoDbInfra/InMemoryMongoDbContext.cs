@@ -1,6 +1,9 @@
-﻿using Mongo2Go;
+﻿using InMemoryMongo2GoAndWireMockPoc.Domain.Entity;
+using InMemoryMongo2GoAndWireMockPoc.Infra.Seed;
+using Mongo2Go;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
 
 namespace InMemoryMongo2GoAndWireMockPoc.Infra
 {
@@ -12,18 +15,20 @@ namespace InMemoryMongo2GoAndWireMockPoc.Infra
 
         private readonly MongoDbRunner _mongoDbRunner;
 
-        public InMemoryMongoDbContext()
+        public InMemoryMongoDbContext(bool seedDatabase = true)
         {
             _mongoDbRunner = MongoDbRunner.Start();
 
             Client = new MongoClient(_mongoDbRunner.ConnectionString);
             Database = Client.GetDatabase("poc");
-            Seed();
+            if(seedDatabase)
+                Seed();
         }
+
 
         private void Seed()
         {
-            //Database.GetCollection<User>("User").InsertMany();
+            Database.GetCollection<User>("User").InsertMany(UsersSeed.UsersSeedData);
         }
 
         /// <summary>

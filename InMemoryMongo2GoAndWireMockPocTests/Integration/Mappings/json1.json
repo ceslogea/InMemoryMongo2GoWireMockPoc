@@ -1,0 +1,64 @@
+{
+  "Guid": "2395e499-a8d2-4702-a0f5-e8ecebdd673e",
+  "Priority": 0,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/api/v1/admin/pontos-retirada"
+        }
+      ]
+    },
+    "Methods": [
+      "get"
+    ],
+    "Params": [
+      {
+        "Name": "Limit",
+        "Values": [
+          "10"
+        ]
+      },
+      {
+        "Name": "Skip",
+        "Values": [
+          "10"
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "Total": 2,
+      "Resultados": [
+        {
+          "bandeira": 2,
+          "codigoFilialMainframe": 31,
+          "codigoFilialFront": 806,
+          "cnpj": "33041260007339",
+          "nomeExibicao": "Pontofrio - Santa Cruz",
+          "cidadeEstado": "Rio de Janeiro/RJ",
+          "recebeProdutosLeves": true,
+          "recebeProdutosPesados": false,
+          "id": "5ed17cd15ac8dfed9bef26b0"
+        },
+        {
+          "bandeira": 2,
+          "codigoFilialMainframe": 175,
+          "codigoFilialFront": 755,
+          "cnpj": "33041260016400",
+          "nomeExibicao": "Pontofrio - Barra Mansa 2",
+          "cidadeEstado": "Barra Mansa/RJ",
+          "recebeProdutosLeves": true,
+          "recebeProdutosPesados": false,
+          "id": "5ed17cd25ac8dfed9bef2732"
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}

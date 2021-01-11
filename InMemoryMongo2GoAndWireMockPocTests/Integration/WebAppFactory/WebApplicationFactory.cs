@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 
-namespace InMemoryMongo2GoAndWireMockPocTests.Integration.WebAppFactory
+namespace Integration.WebAppFactory
 {
     /// <summary>
     /// Gerencia o ciclo de vida da instancida do serviço e possibilita sobrescrever sua inicialização e funcionalidades.
