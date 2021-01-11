@@ -25,7 +25,6 @@ namespace InMemoryMongo2GoAndWireMockPoc.Infra
                 Seed();
         }
 
-
         private void Seed()
         {
             Database.GetCollection<User>("User").InsertMany(UsersSeed.UsersSeedData);

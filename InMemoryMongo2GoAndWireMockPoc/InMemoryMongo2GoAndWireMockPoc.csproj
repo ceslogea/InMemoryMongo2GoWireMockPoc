@@ -8,6 +8,7 @@
     <PackageReference Include="Mongo2Go" Version="2.2.16" />
     <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
     <PackageReference Include="Refit.HttpClientFactory" Version="5.2.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
   </ItemGroup>
 
 

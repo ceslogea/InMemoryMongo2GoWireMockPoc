@@ -20,33 +20,25 @@ namespace InMemoryMongo2GoAndWireMockPoc
     {
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
+            //Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
             Configuration = configuration;
-            Environment = environment;
+            Env = environment;
         }
 
         public IConfiguration Configuration { get; }
-        public IWebHostEnvironment Environment { get; }
+        public IWebHostEnvironment Env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            if ("test".Equals(Environment.EnvironmentName))
-                services.AddSingleton<IMongoContext, InMemoryMongoDbContext>();
-            else
-                services.AddSingleton<IMongoContext, MongoDbContext>();
-
+            services.AddSingleton<IMongoContext, MongoDbContext>();
             services.AddSingleton<IUserQueryRepository, UserQueryRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IUserService, UserService>();
-
-            if ("test".Equals(Environment.EnvironmentName))
-                Configuration["CepApiServiceHost"] = "http://localhost:9093";
-
             services.AddRefitClient<ICepApiService>().ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["CepApiServiceHost"]));
-
             services.AddLogging();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +48,12 @@ namespace InMemoryMongo2GoAndWireMockPoc
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
 
